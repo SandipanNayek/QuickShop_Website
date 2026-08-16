@@ -1,19 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================
+   FLASH SALE
+=========================== */
+
 .flash-sale {
   width: 100%;
   padding: 80px 60px;
 }
 
-/* =======================
-   Header
-======================= */
+/* ===========================
+   HEADER
+=========================== */
 
 .top {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
   margin-bottom: 50px;
   flex-wrap: wrap;
-  gap: 30px;
 }
 
 .heading {
@@ -41,15 +51,15 @@
 }
 
 .heading h2 {
-  margin-top: 18px;
+  margin-top: 15px;
   font-size: 42px;
-  color: #111;
   font-weight: 700;
+  color: #111;
 }
 
-/* =======================
-   Timer
-======================= */
+/* ===========================
+   TIMER
+=========================== */
 
 .timer {
   display: flex;
@@ -66,13 +76,12 @@
 .timer small {
   font-size: 13px;
   color: #666;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .timer h3 {
   font-size: 34px;
   color: #111;
-  margin: 0;
 }
 
 .timer span {
@@ -81,9 +90,9 @@
   font-weight: bold;
 }
 
-/* =======================
-   Slider Buttons
-======================= */
+/* ===========================
+   SLIDER BUTTONS
+=========================== */
 
 .slider-buttons {
   display: flex;
@@ -94,42 +103,87 @@
 .nextBtn {
   width: 48px;
   height: 48px;
-
   border: none;
   border-radius: 50%;
-
   background: #f5f5f5;
+  color: #222;
   cursor: pointer;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   font-size: 18px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .prevBtn:hover,
 .nextBtn:hover {
   background: #db4444;
-  color: white;
+  color: #fff;
 }
 
-/* =======================
-   Swiper
-======================= */
+/* ===========================
+   SWIPER
+=========================== */
 
 .flash-sale .swiper {
+  width: 100%;
+  overflow: hidden;
   padding-bottom: 20px;
+}
+
+.flash-sale .swiper-wrapper {
+  align-items: stretch;
 }
 
 .flash-sale .swiper-slide {
   height: auto;
+  display: flex;
 }
 
-/* =======================
-   Responsive
-======================= */
+/* ===========================
+   SEARCH GRID
+=========================== */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* ===========================
+   DARK MODE
+=========================== */
+
+body.dark-mode .heading h2 {
+  color: #fff;
+}
+
+body.dark-mode .timer small {
+  color: #ccc;
+}
+
+body.dark-mode .timer h3 {
+  color: #fff;
+}
+
+body.dark-mode .prevBtn,
+body.dark-mode .nextBtn {
+  background: #2b2b2b;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark-mode .prevBtn:hover,
+body.dark-mode .nextBtn:hover {
+  background: #db4444;
+  border-color: #db4444;
+}
+
+/* ===========================
+   TABLET
+=========================== */
 
 @media (max-width: 992px) {
 
@@ -147,12 +201,15 @@
   }
 
   .timer h3 {
-    font-size: 26px;
+    font-size: 28px;
   }
-
 }
 
-@media (max-width: 600px) {
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 768px) {
 
   .flash-sale {
     padding: 40px 20px;
@@ -162,31 +219,62 @@
     font-size: 28px;
   }
 
+  .today p {
+    font-size: 16px;
+  }
+
   .timer {
     gap: 10px;
   }
 
   .timer h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .timer span {
     font-size: 20px;
   }
 
+  .slider-buttons {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .prevBtn,
+  .nextBtn {
+    width: 42px;
+    height: 42px;
+    font-size: 15px;
+  }
 }
 
+/* ===========================
+   SMALL MOBILE
+=========================== */
 
-body.dark-mode .prevBtn,
-body.dark-mode .nextBtn {
-  background: #2b2b2b;
-  color: #ffffff;
-  border: 1px solid #444;
-  transition: 0.3s;
-}
+@media (max-width: 480px) {
 
-body.dark-mode .prevBtn:hover,
-body.dark-mode .nextBtn:hover {
-  background: #db4444;
-  color: #ffffff;
+  .flash-sale {
+    padding: 30px 15px;
+  }
+
+  .heading h2 {
+    font-size: 24px;
+  }
+
+  .timer {
+    flex-wrap: wrap;
+  }
+
+  .timer h3 {
+    font-size: 18px;
+  }
+
+  .timer small {
+    font-size: 11px;
+  }
+
+  .slider-buttons {
+    margin-top: 10px;
+  }
 }

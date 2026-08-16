@@ -160,38 +160,44 @@ function FlashSale({ searchTerm = "" }) {
       ) : (
 
         <Swiper
-          modules={[Navigation, Autoplay]}
-          navigation={{
-            prevEl: ".prevBtn",
-            nextEl: ".nextBtn",
-          }}
-          autoplay={{
-            delay: 1000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          loop={true}
-          speed={800}
-          spaceBetween={25}
-          slidesPerView={3}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-            },
-            768: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
-          }}
-        >
-          {products.map((product) => (
-            <SwiperSlide key={product.id}>
-              <ProductCard product={product} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+  modules={[Navigation, Autoplay]}
+  onBeforeInit={(swiper) => {
+    swiper.params.navigation.prevEl = ".prevBtn";
+    swiper.params.navigation.nextEl = ".nextBtn";
+  }}
+  navigation={{
+    prevEl: ".prevBtn",
+    nextEl: ".nextBtn",
+  }}
+  autoplay={{
+    delay: 2500,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+  }}
+  loop={true}
+  speed={700}
+  observer={true}
+  observeParents={true}
+  updateOnWindowResize={true}
+  spaceBetween={25}
+  breakpoints={{
+    0: {
+      slidesPerView: 1,
+    },
+    600: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  }}
+>
+  {products.map((product) => (
+    <SwiperSlide key={product.id}>
+      <ProductCard product={product} />
+    </SwiperSlide>
+  ))}
+</Swiper>
 
       )}
 
