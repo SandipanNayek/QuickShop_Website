@@ -1,0 +1,380 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.profile{
+  width:calc(100% - 100px);
+  margin:50px auto 80px;
+}
+
+.profile-header{
+  margin-bottom:40px;
+}
+
+.profile-header h1{
+  font-size:38px;
+  color:#222;
+  margin-bottom:10px;
+}
+
+.profile-header p{
+  color:#777;
+  font-size:18px;
+}
+
+.profile-container{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:35px;
+}
+
+/* ================= Sidebar ================= */
+
+.profile-sidebar{
+  background:#fff;
+  border-radius:12px;
+  padding:35px 25px;
+
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.profile-avatar{
+  font-size:120px;
+  color:#DB4444;
+}
+
+.profile-sidebar h2{
+  margin-top:18px;
+  font-size:28px;
+  color:#222;
+}
+
+.profile-sidebar p{
+  color:#666;
+  margin-top:8px;
+  margin-bottom:25px;
+}
+
+.profile-sidebar button{
+  width:100%;
+  height:50px;
+
+  border:none;
+  border-radius:8px;
+
+  background:#DB4444;
+  color:#fff;
+
+  font-size:17px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.profile-sidebar button:hover{
+  background:#b92d2d;
+}
+
+.profile-menu{
+  width:100%;
+  margin-top:30px;
+
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.profile-menu a{
+  text-decoration:none;
+  color:#333;
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:15px 18px;
+
+  border-radius:8px;
+
+  transition:.3s;
+
+  font-size:17px;
+}
+
+.profile-menu a:hover{
+  background:#DB4444;
+  color:#fff;
+}
+
+/* ================= Right ================= */
+
+.profile-content{
+  background:#fff;
+
+  border-radius:12px;
+
+  padding:35px;
+
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.profile-content h2{
+  font-size:30px;
+  margin-bottom:30px;
+  color:#222;
+}
+
+.profile-form{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+.input-box{
+  display:flex;
+  flex-direction:column;
+}
+
+.input-box label{
+  margin-bottom:10px;
+  font-weight:600;
+  color:#555;
+}
+
+.input-box input{
+  height:55px;
+
+  border:1px solid #ddd;
+  border-radius:8px;
+
+  padding:0 18px;
+
+  font-size:16px;
+
+  outline:none;
+}
+
+.input-box input:focus{
+  border-color:#DB4444;
+}
+
+.save-btn{
+  margin-top:35px;
+
+  width:220px;
+  height:55px;
+
+  border:none;
+  border-radius:8px;
+
+  background:#DB4444;
+  color:#fff;
+
+  font-size:18px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.save-btn:hover{
+  background:#b92d2d;
+}
+
+/* ================= Orders ================= */
+
+.orders{
+  margin-top:55px;
+
+  background:#fff;
+
+  border-radius:12px;
+
+  padding:35px;
+
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.orders h2{
+  margin-bottom:25px;
+  font-size:30px;
+}
+
+.orders table{
+  width:100%;
+  border-collapse:collapse;
+}
+.logout-btn{
+    width:100%;
+    border:none;
+    background:none;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:15px 18px;
+
+    border-radius:8px;
+
+    font-size:17px;
+
+    transition:.3s;
+}
+
+.logout-btn:hover{
+    background:#DB4444;
+    color:#fff;
+}
+.profile-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.profile-avatar-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #db4444;
+}
+/* =========================
+   DARK MODE - RECENT ORDERS
+========================= */
+
+body.dark-mode .orders {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark-mode .orders h2 {
+  color: #ffffff;
+}
+
+body.dark-mode .orders table {
+  background: #2b2b2b;
+  color: #ffffff;
+}
+
+body.dark-mode .orders th {
+  background: #333333;
+  color: #ffffff;
+}
+
+body.dark-mode .orders td {
+  color: #ffffff;
+  border-bottom: 1px solid #444;
+}
+
+body.dark-mode .orders tr:hover {
+  background: #3a3a3a;
+}
+
+/* Status Colors */
+body.dark-mode .delivered {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+body.dark-mode .shipped {
+  color: #2196f3;
+  font-weight: bold;
+}
+
+body.dark-mode .processing {
+  color: #ff9800;
+  font-weight: bold;
+}
+.upload-btn {
+  background: #db4444;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.upload-btn:hover {
+  background: #b83434;
+}
+.orders th{
+  text-align:left;
+  padding:16px;
+  background:#f7f7f7;
+  font-size:18px;
+}
+
+.orders td{
+  padding:18px 16px;
+  border-bottom:1px solid #eee;
+  font-size:17px;
+}
+
+.delivered{
+  color:green;
+  font-weight:600;
+}
+
+.shipped{
+  color:#ff9800;
+  font-weight:600;
+}
+
+.processing{
+  color:#DB4444;
+  font-weight:600;
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:1000px){
+
+  .profile-container{
+    grid-template-columns:1fr;
+  }
+
+  .profile-form{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .profile{
+    width:calc(100% - 30px);
+  }
+
+  .profile-header h1{
+    font-size:30px;
+  }
+
+  .profile-content,
+  .profile-sidebar,
+  .orders{
+    padding:25px;
+  }
+
+  .orders{
+    overflow-x:auto;
+  }
+
+  .orders table{
+    min-width:600px;
+  }
+
+}

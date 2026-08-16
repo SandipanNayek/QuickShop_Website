@@ -1,0 +1,192 @@
+.flash-sale {
+  width: 100%;
+  padding: 80px 60px;
+}
+
+/* =======================
+   Header
+======================= */
+
+.top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.today {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.today span {
+  width: 18px;
+  height: 38px;
+  background: #db4444;
+  border-radius: 5px;
+}
+
+.today p {
+  color: #db4444;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.heading h2 {
+  margin-top: 18px;
+  font-size: 42px;
+  color: #111;
+  font-weight: 700;
+}
+
+/* =======================
+   Timer
+======================= */
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.timer div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer small {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.timer h3 {
+  font-size: 34px;
+  color: #111;
+  margin: 0;
+}
+
+.timer span {
+  color: #db4444;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* =======================
+   Slider Buttons
+======================= */
+
+.slider-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.prevBtn,
+.nextBtn {
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f5f5f5;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 18px;
+  transition: .3s;
+}
+
+.prevBtn:hover,
+.nextBtn:hover {
+  background: #db4444;
+  color: white;
+}
+
+/* =======================
+   Swiper
+======================= */
+
+.flash-sale .swiper {
+  padding-bottom: 20px;
+}
+
+.flash-sale .swiper-slide {
+  height: auto;
+}
+
+/* =======================
+   Responsive
+======================= */
+
+@media (max-width: 992px) {
+
+  .flash-sale {
+    padding: 60px 30px;
+  }
+
+  .top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .heading h2 {
+    font-size: 34px;
+  }
+
+  .timer h3 {
+    font-size: 26px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .flash-sale {
+    padding: 40px 20px;
+  }
+
+  .heading h2 {
+    font-size: 28px;
+  }
+
+  .timer {
+    gap: 10px;
+  }
+
+  .timer h3 {
+    font-size: 20px;
+  }
+
+  .timer span {
+    font-size: 20px;
+  }
+
+}
+
+
+body.dark-mode .prevBtn,
+body.dark-mode .nextBtn {
+  background: #2b2b2b;
+  color: #ffffff;
+  border: 1px solid #444;
+  transition: 0.3s;
+}
+
+body.dark-mode .prevBtn:hover,
+body.dark-mode .nextBtn:hover {
+  background: #db4444;
+  color: #ffffff;
+}

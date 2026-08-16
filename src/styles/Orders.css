@@ -1,0 +1,247 @@
+.orders-page{
+    width:90%;
+    margin:40px auto;
+}
+
+.orders-page h1{
+    margin-bottom:30px;
+}
+
+.order-card{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    margin-bottom:25px;
+}
+
+.order-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.status{
+    background:#28a745;
+    color:#fff;
+    padding:6px 15px;
+    border-radius:20px;
+    font-size:14px;
+}
+
+.order-product{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+}
+/* ===== Order Tracking ===== */
+
+.tracking {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.step {
+  position: relative;
+  padding: 14px 0 14px 30px;
+  color: #888;
+  font-size: 16px;
+  border-left: 3px solid #ddd;
+  transition: 0.3s;
+}
+
+.step:last-child {
+  border-left: none;
+}
+
+.step::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 18px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ddd;
+}
+
+.step.active {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.step.active::before {
+  background: #28a745;
+}
+
+body.dark-mode .step {
+  color: #bbb;
+  border-left-color: #555;
+}
+
+body.dark-mode .step::before {
+  background: #555;
+}
+
+body.dark-mode .step.active {
+  color: #4caf50;
+}
+
+body.dark-mode .step.active::before {
+  background: #4caf50;
+}
+.order-product{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:18px 0;
+    padding:15px;
+    border:1px solid #e5e5e5;
+    border-radius:12px;
+}
+
+.order-product-img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:10px;
+    border:1px solid #ddd;
+    flex-shrink:0;
+}
+
+.order-product-info{
+    flex:1;
+}
+
+.order-product-info h4{
+    margin-bottom:6px;
+    color:#222;
+}
+
+.order-product-info p{
+    margin:4px 0;
+}
+
+.delivered-msg{
+    margin-top:10px;
+    color:#16a34a;
+    font-weight:600;
+}
+
+body.dark-mode .order-product{
+    background:#222;
+    border-color:#444;
+}
+
+body.dark-mode .order-product-info h4{
+    color:#fff;
+}
+
+body.dark-mode .order-product-info p{
+    color:#ddd;
+}
+
+body.dark-mode .delivered-msg{
+    color:#4ade80;
+}
+
+@media (max-width:768px){
+
+    .order-product{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .order-product-img{
+        width:120px;
+        height:120px;
+    }
+
+}
+/* ==========================
+   Order Action Buttons
+========================== */
+
+.order-actions{
+    margin-top:20px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.cancel-btn{
+    padding:12px 24px;
+    border:none;
+    outline:none;
+    border-radius:8px;
+    background:#e53935;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.cancel-btn:hover{
+    background:#c62828;
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(229,57,53,.3);
+}
+
+.cancel-btn:active{
+    transform:scale(.98);
+}
+
+/* Cancelled Order Box */
+
+.cancelled-order{
+    margin:18px 0;
+    padding:14px 18px;
+    background:#ffebee;
+    border:1px solid #ef5350;
+    color:#d32f2f;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+}
+
+/* Dark Mode */
+
+body.dark-mode .cancel-btn{
+    background:#ef5350;
+    color:#fff;
+}
+
+body.dark-mode .cancel-btn:hover{
+    background:#e53935;
+}
+
+body.dark-mode .cancelled-order{
+    background:#4a1f1f;
+    border-color:#ef5350;
+    color:#ff8a80;
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+    .order-actions{
+        justify-content:center;
+    }
+
+    .cancel-btn{
+        width:100%;
+        font-size:16px;
+        padding:14px;
+    }
+
+    .cancelled-order{
+        text-align:center;
+        font-size:15px;
+    }
+
+}
