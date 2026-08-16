@@ -8,9 +8,9 @@
 
 .hero{
   width:calc(100% - 40px);
-  height:650px;
+  min-height:650px;
   margin:20px;
-  padding:0 30px;
+  padding:0 40px;
 
   display:flex;
   justify-content:space-between;
@@ -20,17 +20,12 @@
   overflow:hidden;
   border-radius:20px;
 
-  
-
-  
-
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
 
-  transition:
-    background-image .4s ease,
-    background-color .4s ease;
+  transition:background-image .4s ease,
+             background-color .4s ease;
 }
 
 /* ================= BACKGROUND TEXT ================= */
@@ -38,7 +33,7 @@
 .bg-text{
   position:absolute;
   left:30px;
-  bottom:-40px;
+  bottom:-35px;
 
   font-size:220px;
   font-weight:900;
@@ -49,7 +44,6 @@
 
   user-select:none;
   z-index:1;
-  transition:.3s;
 }
 
 /* ================= LEFT ================= */
@@ -111,12 +105,12 @@
   width:52px;
   height:52px;
 
+  border:none;
+  border-radius:50%;
+
   display:flex;
   justify-content:center;
   align-items:center;
-
-  border:none;
-  border-radius:50%;
 
   background:#fff;
 
@@ -143,17 +137,21 @@
   justify-content:center;
   align-items:center;
 
+  min-height:500px;
+
   position:relative;
   z-index:2;
 }
 
 .hero-right img{
-  width:520px;
-  max-width:100%;
+  width:100%;
+  max-width:500px;
+  height:450px;
   object-fit:contain;
+  display:block;
 }
 
-
+/* ================= DARK MODE ================= */
 
 body.dark-mode .hero-title{
   color:#fff;
@@ -164,7 +162,7 @@ body.dark-mode .hero-description{
 }
 
 body.dark-mode .bg-text{
-  color:orange
+  color:orange;
 }
 
 body.dark-mode .shop-btn{
@@ -191,8 +189,8 @@ body.dark-mode .arrow-btn:hover{
   .hero{
     width:calc(100% - 30px);
     margin:15px;
-    padding:40px 25px;
-    height:auto;
+    padding:35px 25px;
+    min-height:auto;
     gap:30px;
   }
 
@@ -201,17 +199,22 @@ body.dark-mode .arrow-btn:hover{
     width:50%;
   }
 
+  .hero-right{
+    min-height:360px;
+  }
+
+  .hero-right img{
+    max-width:360px;
+    height:320px;
+  }
+
   .hero-title{
     font-size:42px;
   }
 
-  .hero-right img{
-    width:380px;
-  }
-
   .bg-text{
     font-size:140px;
-    bottom:-20px;
+    bottom:-15px;
   }
 
 }
@@ -225,15 +228,26 @@ body.dark-mode .arrow-btn:hover{
     margin:10px;
     padding:30px 20px;
 
-    height:auto;
-
     flex-direction:column-reverse;
+    justify-content:center;
     text-align:center;
   }
 
   .hero-left,
   .hero-right{
     width:100%;
+  }
+
+  .hero-right{
+    min-height:320px;
+  }
+
+  .hero-right img{
+    width:100%;
+    max-width:300px;
+    height:280px;
+    object-fit:contain;
+    margin-bottom:15px;
   }
 
   .hero-title{
@@ -260,18 +274,11 @@ body.dark-mode .arrow-btn:hover{
     font-size:16px;
   }
 
-  .hero-right img{
-    width:300px;
-    margin-bottom:20px;
-  }
-
   .bg-text{
     left:50%;
     transform:translateX(-50%);
     bottom:-10px;
-
     font-size:90px;
-
     white-space:nowrap;
   }
 
@@ -283,6 +290,15 @@ body.dark-mode .arrow-btn:hover{
 
   .hero{
     padding:25px 15px;
+  }
+
+  .hero-right{
+    min-height:250px;
+  }
+
+  .hero-right img{
+    max-width:220px;
+    height:220px;
   }
 
   .hero-title{
@@ -305,10 +321,6 @@ body.dark-mode .arrow-btn:hover{
   .arrow-btn{
     width:44px;
     height:44px;
-  }
-
-  .hero-right img{
-    width:220px;
   }
 
   .bg-text{
