@@ -42,6 +42,7 @@ function Login() {
         }
       } catch (error) {
         console.error(error);
+        toast.error(error.message);
       }
     };
 
@@ -95,13 +96,11 @@ function Login() {
   return (
     <section className="auth">
       <div className="auth-box">
-
         <h1>Welcome Back</h1>
 
         <p>Login to continue shopping</p>
 
         <form onSubmit={handleSubmit}>
-
           <input
             type="email"
             placeholder="Email"
@@ -118,9 +117,7 @@ function Login() {
             required
           />
 
-          <button type="submit">
-            Login
-          </button>
+          <button type="submit">Login</button>
 
           <div className="divider">
             <span>OR</span>
@@ -134,14 +131,12 @@ function Login() {
             <FcGoogle size={22} />
             Continue with Google
           </button>
-
         </form>
 
         <p className="switch">
           Don't have an account?
           <Link to="/signup"> Sign Up</Link>
         </p>
-
       </div>
     </section>
   );
