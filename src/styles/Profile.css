@@ -4,8 +4,10 @@
   box-sizing:border-box;
 }
 
+/* ================= PROFILE ================= */
+
 .profile{
-  width:calc(100% - 100px);
+  width:min(1200px,calc(100% - 40px));
   margin:50px auto 80px;
 }
 
@@ -20,23 +22,22 @@
 }
 
 .profile-header p{
-  color:#777;
   font-size:18px;
+  color:#777;
 }
 
 .profile-container{
   display:grid;
-  grid-template-columns:320px 1fr;
+  grid-template-columns:300px 1fr;
   gap:35px;
 }
 
-/* ================= Sidebar ================= */
+/* ================= SIDEBAR ================= */
 
 .profile-sidebar{
   background:#fff;
   border-radius:12px;
   padding:35px 25px;
-
   box-shadow:0 5px 20px rgba(0,0,0,.08);
 
   display:flex;
@@ -44,21 +45,93 @@
   align-items:center;
 }
 
+.profile-image-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+
 .profile-avatar{
   font-size:120px;
   color:#DB4444;
 }
 
+.profile-avatar-img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #DB4444;
+}
+
+.upload-btn{
+  background:#DB4444;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:.3s;
+  font-size:14px;
+}
+
+.upload-btn:hover{
+  background:#b92d2d;
+}
+
 .profile-sidebar h2{
-  margin-top:18px;
+  margin-top:15px;
   font-size:28px;
   color:#222;
 }
 
 .profile-sidebar p{
-  color:#666;
   margin-top:8px;
   margin-bottom:25px;
+  color:#666;
+  text-align:center;
+}
+
+.profile-menu{
+  width:100%;
+  margin-top:25px;
+
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.profile-menu a,
+.logout-btn{
+  width:100%;
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:15px 18px;
+
+  border:none;
+  border-radius:8px;
+
+  background:none;
+
+  color:#333;
+
+  text-decoration:none;
+
+  font-size:17px;
+
+  transition:.3s;
+
+  cursor:pointer;
+}
+
+.profile-menu a:hover,
+.logout-btn:hover{
+  background:#DB4444;
+  color:#fff;
 }
 
 .profile-sidebar button{
@@ -75,7 +148,6 @@
   font-weight:600;
 
   cursor:pointer;
-
   transition:.3s;
 }
 
@@ -83,53 +155,19 @@
   background:#b92d2d;
 }
 
-.profile-menu{
-  width:100%;
-  margin-top:30px;
-
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.profile-menu a{
-  text-decoration:none;
-  color:#333;
-
-  display:flex;
-  align-items:center;
-  gap:12px;
-
-  padding:15px 18px;
-
-  border-radius:8px;
-
-  transition:.3s;
-
-  font-size:17px;
-}
-
-.profile-menu a:hover{
-  background:#DB4444;
-  color:#fff;
-}
-
-/* ================= Right ================= */
+/* ================= CONTENT ================= */
 
 .profile-content{
   background:#fff;
-
   border-radius:12px;
-
   padding:35px;
-
   box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
 .profile-content h2{
   font-size:30px;
-  margin-bottom:30px;
   color:#222;
+  margin-bottom:30px;
 }
 
 .profile-form{
@@ -150,6 +188,7 @@
 }
 
 .input-box input{
+  width:100%;
   height:55px;
 
   border:1px solid #ddd;
@@ -160,6 +199,8 @@
   font-size:16px;
 
   outline:none;
+
+  transition:.3s;
 }
 
 .input-box input:focus{
@@ -189,143 +230,50 @@
 .save-btn:hover{
   background:#b92d2d;
 }
-
-/* ================= Orders ================= */
+/* ================= ORDERS ================= */
 
 .orders{
   margin-top:55px;
-
   background:#fff;
-
   border-radius:12px;
-
   padding:35px;
-
   box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
 .orders h2{
-  margin-bottom:25px;
   font-size:30px;
+  color:#222;
+  margin-bottom:25px;
 }
 
 .orders table{
   width:100%;
   border-collapse:collapse;
 }
-.logout-btn{
-    width:100%;
-    border:none;
-    background:none;
-    cursor:pointer;
 
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    padding:15px 18px;
-
-    border-radius:8px;
-
-    font-size:17px;
-
-    transition:.3s;
-}
-
-.logout-btn:hover{
-    background:#DB4444;
-    color:#fff;
-}
-.profile-image-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.profile-avatar-img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #db4444;
-}
-/* =========================
-   DARK MODE - RECENT ORDERS
-========================= */
-
-body.dark-mode .orders {
-  background: #1e1e1e;
-  color: #ffffff;
-}
-
-body.dark-mode .orders h2 {
-  color: #ffffff;
-}
-
-body.dark-mode .orders table {
-  background: #2b2b2b;
-  color: #ffffff;
-}
-
-body.dark-mode .orders th {
-  background: #333333;
-  color: #ffffff;
-}
-
-body.dark-mode .orders td {
-  color: #ffffff;
-  border-bottom: 1px solid #444;
-}
-
-body.dark-mode .orders tr:hover {
-  background: #3a3a3a;
-}
-
-/* Status Colors */
-body.dark-mode .delivered {
-  color: #4caf50;
-  font-weight: bold;
-}
-
-body.dark-mode .shipped {
-  color: #2196f3;
-  font-weight: bold;
-}
-
-body.dark-mode .processing {
-  color: #ff9800;
-  font-weight: bold;
-}
-.upload-btn {
-  background: #db4444;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.upload-btn:hover {
-  background: #b83434;
-}
 .orders th{
   text-align:left;
   padding:16px;
   background:#f7f7f7;
   font-size:18px;
+  color:#222;
 }
 
 .orders td{
   padding:18px 16px;
   border-bottom:1px solid #eee;
   font-size:17px;
+  color:#444;
 }
 
+.orders tr:last-child td{
+  border-bottom:none;
+}
+
+/* ================= ORDER STATUS ================= */
+
 .delivered{
-  color:green;
+  color:#28a745;
   font-weight:600;
 }
 
@@ -339,42 +287,321 @@ body.dark-mode .processing {
   font-weight:600;
 }
 
-/* ================= Responsive ================= */
+/* ================= DARK MODE ================= */
 
-@media(max-width:1000px){
+body.dark-mode .profile{
+  background:transparent;
+}
+
+body.dark-mode .profile-header h1{
+  color:#fff;
+}
+
+body.dark-mode .profile-header p{
+  color:#bdbdbd;
+}
+
+body.dark-mode .profile-sidebar,
+body.dark-mode .profile-content,
+body.dark-mode .orders{
+  background:#1f1f1f;
+  box-shadow:none;
+}
+
+body.dark-mode .profile-sidebar h2,
+body.dark-mode .profile-content h2,
+body.dark-mode .orders h2{
+  color:#fff;
+}
+
+body.dark-mode .profile-sidebar p{
+  color:#bdbdbd;
+}
+
+body.dark-mode .profile-menu a,
+body.dark-mode .logout-btn{
+  color:#fff;
+}
+
+body.dark-mode .profile-menu a:hover,
+body.dark-mode .logout-btn:hover{
+  background:#DB4444;
+  color:#fff;
+}
+
+body.dark-mode .input-box label{
+  color:#e0e0e0;
+}
+
+body.dark-mode .input-box input{
+  background:#2a2a2a;
+  color:#fff;
+  border:1px solid #444;
+}
+
+body.dark-mode .input-box input::placeholder{
+  color:#aaa;
+}
+
+body.dark-mode .input-box input:focus{
+  border-color:#DB4444;
+}
+
+body.dark-mode .orders table{
+  background:#1f1f1f;
+}
+
+body.dark-mode .orders th{
+  background:#2b2b2b;
+  color:#fff;
+}
+
+body.dark-mode .orders td{
+  color:#eee;
+  border-bottom:1px solid #333;
+}
+
+body.dark-mode .profile-avatar-img{
+  border-color:#DB4444;
+}
+
+body.dark-mode .upload-btn{
+  background:#DB4444;
+}
+
+body.dark-mode .upload-btn:hover{
+  background:#b92d2d;
+}
+
+body.dark-mode .save-btn{
+  background:#DB4444;
+}
+
+body.dark-mode .save-btn:hover{
+  background:#b92d2d;
+}
+
+body.dark-mode .delivered{
+  color:#4caf50;
+}
+
+body.dark-mode .shipped{
+  color:#42a5f5;
+}
+
+body.dark-mode .processing{
+  color:#ff9800;
+}
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width:992px){
+
+  .profile{
+    width:calc(100% - 30px);
+    margin:40px auto 70px;
+  }
 
   .profile-container{
     grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .profile-sidebar,
+  .profile-content,
+  .orders{
+    padding:30px;
   }
 
   .profile-form{
     grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .save-btn{
+    width:100%;
+  }
+
+  .profile-sidebar{
+    text-align:center;
+  }
+
+  .profile-menu{
+    margin-top:20px;
   }
 
 }
 
-@media(max-width:600px){
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:768px){
 
   .profile{
-    width:calc(100% - 30px);
+    width:calc(100% - 20px);
+    margin:25px auto 50px;
+  }
+
+  .profile-header{
+    text-align:center;
+    margin-bottom:25px;
   }
 
   .profile-header h1{
     font-size:30px;
   }
 
-  .profile-content,
+  .profile-header p{
+    font-size:15px;
+  }
+
   .profile-sidebar,
+  .profile-content,
   .orders{
-    padding:25px;
+    padding:20px;
+    border-radius:10px;
+  }
+
+  .profile-avatar{
+    font-size:90px;
+  }
+
+  .profile-avatar-img{
+    width:110px;
+    height:110px;
+  }
+
+  .profile-sidebar h2{
+    font-size:24px;
+  }
+
+  .profile-sidebar p{
+    font-size:15px;
+  }
+
+  .profile-menu{
+    gap:10px;
+  }
+
+  .profile-menu a,
+  .logout-btn{
+    padding:14px;
+    font-size:15px;
+  }
+
+  .profile-content h2,
+  .orders h2{
+    font-size:24px;
+    margin-bottom:20px;
+  }
+
+  .input-box label{
+    font-size:15px;
+  }
+
+  .input-box input{
+    height:48px;
+    font-size:15px;
+    padding:0 15px;
+  }
+
+  .save-btn{
+    width:100%;
+    height:48px;
+    font-size:16px;
+    margin-top:25px;
   }
 
   .orders{
     overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
   }
 
   .orders table{
-    min-width:600px;
+    min-width:650px;
+  }
+
+  .orders th,
+  .orders td{
+    font-size:15px;
+    padding:14px;
+  }
+
+}
+
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media (max-width:480px){
+
+  .profile{
+    width:calc(100% - 16px);
+    margin:20px auto 40px;
+  }
+
+  .profile-header h1{
+    font-size:26px;
+  }
+
+  .profile-header p{
+    font-size:14px;
+  }
+
+  .profile-sidebar,
+  .profile-content,
+  .orders{
+    padding:15px;
+  }
+
+  .profile-avatar{
+    font-size:70px;
+  }
+
+  .profile-avatar-img{
+    width:90px;
+    height:90px;
+  }
+
+  .profile-sidebar h2{
+    font-size:20px;
+  }
+
+  .profile-sidebar p{
+    font-size:14px;
+  }
+
+  .profile-menu a,
+  .logout-btn{
+    padding:12px;
+    font-size:14px;
+  }
+
+  .profile-content h2,
+  .orders h2{
+    font-size:20px;
+  }
+
+  .input-box label{
+    font-size:14px;
+  }
+
+  .input-box input{
+    height:44px;
+    font-size:14px;
+  }
+
+  .save-btn{
+    height:45px;
+    font-size:15px;
+  }
+
+  .upload-btn{
+    width:100%;
+    text-align:center;
+    font-size:14px;
   }
 
 }
