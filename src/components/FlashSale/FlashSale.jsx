@@ -9,10 +9,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function FlashSale({ searchTerm = "" }) {
-  // Countdown Target Date (3 Days)
+  const swiperRef = useRef(null);
+
   const [targetDate] = useState(() => {
     const date = new Date();
     date.setDate(date.getDate() + 3);
@@ -60,19 +61,24 @@ function FlashSale({ searchTerm = "" }) {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.update();
+
+      if (swiperRef.current.autoplay) {
+        swiperRef.current.autoplay.start();
+      }
+    }
+  });
+
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <section className="flash-sale">
-
-    
-
       <div className="top">
-
         <div className="heading">
-
           <div className="today">
             <span></span>
             <p>Today's</p>
@@ -83,15 +89,11 @@ function FlashSale({ searchTerm = "" }) {
               ? `Search Results (${filteredProducts.length})`
               : "Flash Sales"}
           </h2>
-
         </div>
 
         {!searchTerm && (
           <>
-            
-
             <div className="timer">
-
               <div>
                 <small>Days</small>
                 <h3>{timeLeft.days}</h3>
@@ -117,13 +119,9 @@ function FlashSale({ searchTerm = "" }) {
                 <small>Seconds</small>
                 <h3>{timeLeft.seconds}</h3>
               </div>
-
             </div>
 
-            {/* Slider Buttons */}
-
             <div className="slider-buttons">
-
               <button className="prevBtn">
                 <FaArrowLeft />
               </button>
@@ -131,19 +129,13 @@ function FlashSale({ searchTerm = "" }) {
               <button className="nextBtn">
                 <FaArrowRight />
               </button>
-
             </div>
           </>
         )}
-
       </div>
 
-      {/* Search Result */}
-
       {searchTerm ? (
-
         <div className="products-grid">
-
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <ProductCard
@@ -154,17 +146,10 @@ function FlashSale({ searchTerm = "" }) {
           ) : (
             <h2>No products found.</h2>
           )}
-
         </div>
-
       ) : (
-
         <Swiper
   modules={[Navigation, Autoplay]}
-  onBeforeInit={(swiper) => {
-    swiper.params.navigation.prevEl = ".prevBtn";
-    swiper.params.navigation.nextEl = ".nextBtn";
-  }}
   navigation={{
     prevEl: ".prevBtn",
     nextEl: ".nextBtn",
@@ -175,16 +160,14 @@ function FlashSale({ searchTerm = "" }) {
     pauseOnMouseEnter: false,
   }}
   loop={true}
-  speed={700}
-  observer={true}
-  observeParents={true}
-  updateOnWindowResize={true}
+  speed={800}
   spaceBetween={25}
+  slidesPerView={3}
   breakpoints={{
     0: {
       slidesPerView: 1,
     },
-    600: {
+    768: {
       slidesPerView: 2,
     },
     1024: {
@@ -192,17 +175,14 @@ function FlashSale({ searchTerm = "" }) {
     },
   }}
 >
-  {products.map((product) => (
-    <SwiperSlide key={product.id}>
-      <ProductCard product={product} />
-    </SwiperSlide>
-  ))}
-</Swiper>
-
+          {products.map((product) => (
+            <SwiperSlide key={product.id}>
+              <ProductCard product={product} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       )}
-
     </section>
   );
 }
-
 export default FlashSale;

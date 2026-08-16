@@ -278,3 +278,12 @@ body.dark-mode .nextBtn:hover {
     margin-top: 10px;
   }
 }
+.flash-sale {
+  position: relative;
+  z-index: 1;
+}
+
+.flash-sale .swiper {
+  position: relative;
+  z-index: 2;
+}
