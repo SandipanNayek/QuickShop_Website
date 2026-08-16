@@ -1,93 +1,47 @@
-body.dark-mode {
-  background: #121212;
-  color: #ffffff;
+/* ===========================
+   RESET
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body.dark-mode * {
-  transition: background 0.3s, color 0.3s;
+html {
+  scroll-behavior: smooth;
 }
 
-body.dark-mode .navbar {
-  background: #1f1f1f;
+body {
+  font-family: "Poppins", sans-serif;
+  background: #ffffff;
+  color: #111111;
+  transition: background-color .3s ease, color .3s ease;
 }
 
-body.dark-mode .logo {
-  color: white;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-body.dark-mode .search-box input {
-  background: #2b2b2b;
-  color: white;
-  border: 1px solid #555;
+button {
+  cursor: pointer;
+  font-family: inherit;
+  transition: .3s;
 }
 
-body.dark-mode .search-box button {
-  background: #db4444;
-  color: white;
+input,
+textarea,
+select {
+  font-family: inherit;
+  outline: none;
 }
 
-body.dark-mode .icon {
-  color: white;
+img {
+  max-width: 100%;
+  display: block;
 }
 
-/* Dark Mode */
-
-body.dark-mode {
-  background: #121212;
-  color: #ffffff;
-}
-
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h4,
-body.dark-mode h5,
-body.dark-mode h6,
-body.dark-mode p,
-body.dark-mode span,
-body.dark-mode label,
-body.dark-mode a,
-body.dark-mode li,
-body.dark-mode strong {
-  color: #ffffff;
-}
-
-body.dark-mode input,
-body.dark-mode textarea,
-body.dark-mode select {
-  background: #2a2a2a;
-  color: #ffffff;
-  border: 1px solid #555;
-}
-
-body.dark-mode input::placeholder {
-  color: #bdbdbd;
-}
-
-body.dark-mode button {
-  color: #ffffff;
-}
-
-body.dark-mode .navbar {
-  background: #1e1e1e;
-}
-
-body.dark-mode .search-box input {
-  background: #2a2a2a;
-  color: white;
-}
-
-body.dark-mode .search-box button {
-  background: #db4444;
-}
-
-body.dark-mode .icon {
-  color: white;
-}
-
-body.dark-mode .logo {
-  color: white;
-}
 /* ===========================
    GLOBAL DARK MODE
 =========================== */
@@ -95,10 +49,10 @@ body.dark-mode .logo {
 body.dark-mode {
   background: #121212;
   color: #f5f5f5;
-  transition: all 0.3s ease;
 }
 
 /* Text */
+
 body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3,
@@ -106,35 +60,27 @@ body.dark-mode h4,
 body.dark-mode h5,
 body.dark-mode h6,
 body.dark-mode p,
-body.dark-mode span,
 body.dark-mode a,
 body.dark-mode label,
 body.dark-mode small,
-body.dark-mode strong {
-  color: #f5f5f5;
-}
-
-/* Links */
-body.dark-mode a {
+body.dark-mode strong,
+body.dark-mode li {
   color: #f5f5f5;
 }
 
 /* Inputs */
+
 body.dark-mode input,
 body.dark-mode textarea,
 body.dark-mode select {
   background: #2b2b2b;
-  color: white;
+  color: #ffffff;
   border: 1px solid #555;
 }
 
-body.dark-mode input::placeholder {
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
   color: #bdbdbd;
-}
-
-/* Buttons */
-body.dark-mode button {
-  color: white;
 }
 
 /* ===========================
@@ -142,12 +88,13 @@ body.dark-mode button {
 =========================== */
 
 body.dark-mode .navbar {
-  background: #1c1c1c;
+  background: #1d1d1d;
   border-bottom: 1px solid #333;
 }
 
-body.dark-mode .logo {
-  color: white;
+body.dark-mode .logo,
+body.dark-mode .icon {
+  color: #ffffff;
 }
 
 body.dark-mode .search-box input {
@@ -160,117 +107,90 @@ body.dark-mode .search-box button {
   color: white;
 }
 
-body.dark-mode .icon {
-  color: white;
-}
+/* ===========================
+   HERO
+=========================== */
 
-body.dark-mode .theme-btn {
-  background: #333;
-  color: white;
+body.dark-mode .hero {
+  background-color: #121212;
 }
 
 /* ===========================
-   PRODUCT CARDS
+   FLASH SALE
 =========================== */
+
+body.dark-mode .flash-sale {
+  background: #121212;
+}
+
+/* ===========================
+   CATEGORIES
+=========================== */
+
+body.dark-mode .categories {
+  background: #121212;
+}
+
+body.dark-mode .category-card {
+  background: #2b2b2b;
+  border: 1px solid #444;
+}
+
+body.dark-mode .category-card:hover {
+  background: #db4444;
+}
+
+/* ===========================
+   PRODUCTS
+=========================== */
+
+body.dark-mode .products {
+  background: #121212;
+}
 
 body.dark-mode .product-card {
   background: #222;
-  color: white;
-  box-shadow: 0 0 10px rgba(255,255,255,.08);
+  box-shadow: 0 0 10px rgba(255,255,255,.05);
 }
 
 body.dark-mode .product-info h3,
 body.dark-mode .product-info p,
 body.dark-mode .product-price {
-  color: white;
-}
-
-/* ===========================
-   HOME SECTIONS
-=========================== */
-
-body.dark-mode .hero,
-body.dark-mode .flash-sale,
-body.dark-mode .categories,
-body.dark-mode .promo,
-body.dark-mode .products {
-  background: #121212;
-}
-
-/* ===========================
-   PROFILE
-=========================== */
-
-body.dark-mode .profile,
-body.dark-mode .profile-sidebar,
-body.dark-mode .profile-content {
-  background: #1e1e1e;
-  color: white;
-}
-
-body.dark-mode .profile input {
-  background: #2b2b2b;
-  color: white;
+  color: #ffffff;
 }
 
 /* ===========================
    CART
 =========================== */
 
-body.dark-mode .cart {
+body.dark-mode .cart,
+body.dark-mode .wishlist,
+body.dark-mode .profile,
+body.dark-mode .orders-page,
+body.dark-mode .checkout {
   background: #121212;
 }
 
 body.dark-mode .cart-item,
-body.dark-mode .cart-summary {
-  background: #222;
-  color: white;
-}
-
-/* ===========================
-   WISHLIST
-=========================== */
-
-body.dark-mode .wishlist {
-  background: #121212;
-}
-
-body.dark-mode .wishlist-card {
-  background: #222;
-  color: white;
-}
-
-/* ===========================
-   CHECKOUT
-=========================== */
-
+body.dark-mode .cart-summary,
+body.dark-mode .wishlist-card,
+body.dark-mode .profile-content,
+body.dark-mode .profile-sidebar,
 body.dark-mode .checkout-left,
-body.dark-mode .checkout-right {
-  background: #222;
-  color: white;
-}
-
-/* ===========================
-   PROFILE / SETTINGS / ORDERS
-=========================== */
-
-body.dark-mode .settings-card,
+body.dark-mode .checkout-right,
 body.dark-mode .order-card,
-body.dark-mode .orders-page {
+body.dark-mode .settings-card {
   background: #222;
   color: white;
 }
 
 /* ===========================
-   LOGIN & SIGNUP
+   LOGIN / SIGNUP
 =========================== */
 
-body.dark-mode .login,
-body.dark-mode .signup,
-body.dark-mode .login-box,
-body.dark-mode .signup-box {
+body.dark-mode .auth,
+body.dark-mode .auth-box {
   background: #121212;
-  color: white;
 }
 
 /* ===========================
@@ -278,7 +198,7 @@ body.dark-mode .signup-box {
 =========================== */
 
 body.dark-mode footer {
-  background: #1c1c1c;
+  background: #1d1d1d;
 }
 
 body.dark-mode footer * {
@@ -300,35 +220,4 @@ body.dark-mode th {
 
 body.dark-mode td {
   border-color: #444;
-}
-/* ===== Categories Dark Mode ===== */
-
-body.dark-mode .categories {
-  background: #121212;
-}
-
-body.dark-mode .category-card {
-  background: #2b2b2b;
-  border: 1px solid #444;
-  color: #ffffff;
-}
-
-body.dark-mode .category-card h3,
-body.dark-mode .category-card p,
-body.dark-mode .category-card span {
-  color: #ffffff;
-}
-
-body.dark-mode .category-card svg {
-  color: #ffffff;
-}
-
-body.dark-mode .category-card:hover {
-  background: #db4444;
-}
-
-body.dark-mode .category-card:hover h3,
-body.dark-mode .category-card:hover p,
-body.dark-mode .category-card:hover svg {
-  color: #ffffff;
 }
