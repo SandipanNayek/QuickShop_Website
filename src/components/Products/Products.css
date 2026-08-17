@@ -167,3 +167,34 @@ body.dark-mode .section-title{
     }
 
 }
+.category-filter{
+    display:flex;
+    gap:15px;
+    margin:25px 0 35px;
+    flex-wrap:wrap;
+}
+
+.category-filter button{
+    padding:10px 22px;
+    border:none;
+    border-radius:30px;
+    background:#f5f5f5;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.category-filter button:hover{
+    background:#db4444;
+    color:#fff;
+}
+
+.active-category{
+    background:#db4444 !important;
+    color:#fff;
+}
+.product-link{
+    text-decoration:none;
+    color:inherit;
+    display:block;
+}

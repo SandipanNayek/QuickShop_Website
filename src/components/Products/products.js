@@ -163,7 +163,7 @@ export const products = [
   },
   {
     id: 15,
-    title: "Puma Hoodie",
+    title: "Puma Pant",
     price: 70,
     oldPrice: 90,
     image: "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=500",

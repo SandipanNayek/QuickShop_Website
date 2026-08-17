@@ -1,4 +1,5 @@
 import "./Navbar.css";
+
 import {
   FaHome,
   FaHeart,
@@ -14,6 +15,7 @@ import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
 import { useAuth } from "../../context/AuthContext";
 import { useState, useEffect } from "react";
+import { products } from "../Products/products";
 
 function Navbar({ searchTerm, setSearchTerm }) {
   const { wishlist } = useWishlist();
@@ -23,6 +25,8 @@ function Navbar({ searchTerm, setSearchTerm }) {
   const [darkMode, setDarkMode] = useState(() => {
     return JSON.parse(localStorage.getItem("darkMode")) || false;
   });
+
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     if (darkMode) {
@@ -34,21 +38,74 @@ function Navbar({ searchTerm, setSearchTerm }) {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
 
+  const handleSearch = (e) => {
+    const value = e.target.value;
+
+    setSearchTerm(value);
+
+    if (value.trim() === "") {
+      setSuggestions([]);
+      return;
+    }
+
+    const result = products.filter((product) =>
+      product.title.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setSuggestions(result.slice(0, 5));
+  };
+
+  const selectSuggestion = (title) => {
+    setSearchTerm(title);
+    setSuggestions([]);
+  };
+
   return (
     <nav className="navbar">
+
       <h2 className="logo">QuickShop</h2>
 
-      <div className="search-box">
-        <FaSearch className="search-icon" />
+      <div className="search-wrapper">
 
-        <input
-          type="text"
-          placeholder="Search Products..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+        <div className="search-box">
+          <FaSearch className="search-icon" />
 
-        <button>Search</button>
+          <input
+            type="text"
+            placeholder="Search Products..."
+            value={searchTerm}
+            onChange={handleSearch}
+            onBlur={() => setTimeout(() => setSuggestions([]), 200)}
+          />
+
+          <button>Search</button>
+        </div>
+
+        {suggestions.length > 0 && (
+          <div className="search-suggestions">
+
+            {suggestions.map((product) => (
+              <div
+                key={product.id}
+                className="suggestion-item"
+                onMouseDown={() => selectSuggestion(product.title)}
+              >
+                <img
+                  src={product.image}
+                  alt={product.title}
+                />
+
+                <div className="suggestion-info">
+                  <h4>{product.title}</h4>
+                  <p>${product.price}</p>
+                </div>
+
+              </div>
+            ))}
+
+          </div>
+        )}
+
       </div>
 
       <div className="nav-icons">
@@ -83,6 +140,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
               {wishlist.length}
             </span>
           )}
+
         </NavLink>
 
         <NavLink
@@ -98,6 +156,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
               {cart.length}
             </span>
           )}
+
         </NavLink>
 
         <NavLink
@@ -108,7 +167,9 @@ function Navbar({ searchTerm, setSearchTerm }) {
         >
           <FaUser />
         </NavLink>
+
       </div>
+
     </nav>
   );
 }

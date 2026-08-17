@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 import Orders from "./pages/Orders";
+import ProductDetails from "./pages/ProductDetails";
 
 import { useState } from "react";
 
@@ -47,6 +48,11 @@ function App() {
         <Route path="/success" element={<OrderSuccess />} />
 
         <Route path='/orders' element={<Orders/>}/>
+
+        <Route
+        path="/product/:id"
+        element={<ProductDetails />}
+       />
 
       </Routes>
     </>

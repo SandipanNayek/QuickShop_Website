@@ -1,9 +1,12 @@
-import { useCart } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 import { FaHeart, FaEye, FaStar } from "react-icons/fa";
+
+import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
 
 function ProductCard({ product }) {
   const { addToCart } = useCart();
+
   const {
     addToWishlist,
     removeFromWishlist,
@@ -12,6 +15,8 @@ function ProductCard({ product }) {
 
   return (
     <div className="product-card">
+
+      {/* Product Image */}
 
       <div className="product-image">
 
@@ -24,11 +29,13 @@ function ProductCard({ product }) {
         <div className="product-icons">
 
           <button
-            onClick={() =>
+            onClick={(e) => {
+              e.stopPropagation();
+
               isInWishlist(product.id)
                 ? removeFromWishlist(product.id)
-                : addToWishlist(product)
-            }
+                : addToWishlist(product);
+            }}
           >
             <FaHeart
               color={
@@ -39,58 +46,73 @@ function ProductCard({ product }) {
             />
           </button>
 
-          <button>
-            <FaEye />
-          </button>
+          <Link to={`/product/${product.id}`}>
+            <button>
+              <FaEye />
+            </button>
+          </Link>
 
         </div>
 
-        <img
-          src={product.image}
-          alt={product.title}
-        />
+        <Link
+          to={`/product/${product.id}`}
+          className="product-link"
+        >
+          <img
+            src={product.image}
+            alt={product.title}
+          />
+        </Link>
 
         <button
           className="cart-btn"
-          onClick={() => addToCart(product)}
+          onClick={(e) => {
+            e.stopPropagation();
+            addToCart(product);
+          }}
         >
           Add To Cart
         </button>
 
       </div>
 
-      <div className="product-info">
+      {/* Product Info */}
 
-        <h3>{product.title}</h3>
+      <Link
+        to={`/product/${product.id}`}
+        className="product-link"
+      >
+        <div className="product-info">
 
-        <div className="price">
+          <h3>{product.title}</h3>
 
-          <span className="new-price">
-            ${product.price}
-          </span>
+          <div className="price">
 
-          <span className="old-price">
-            ${product.oldPrice}
-          </span>
+            <span className="new-price">
+              ${product.price}
+            </span>
+
+            <span className="old-price">
+              ${product.oldPrice}
+            </span>
+
+          </div>
+
+          <div className="rating">
+
+            {[...Array(product.rating)].map((_, i) => (
+              <FaStar
+                key={i}
+                className="star"
+              />
+            ))}
+
+            <span>({product.reviews})</span>
+
+          </div>
 
         </div>
-
-        <div className="rating">
-
-          {[...Array(product.rating)].map((_, i) => (
-            <FaStar
-              key={i}
-              className="star"
-            />
-          ))}
-
-          <span>
-            ({product.reviews})
-          </span>
-
-        </div>
-
-      </div>
+      </Link>
 
     </div>
   );

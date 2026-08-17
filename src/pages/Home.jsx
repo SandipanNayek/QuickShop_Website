@@ -5,6 +5,8 @@ import Categories from "../components/Categories/Categories.jsx";
 import Promo from "../components/Promo/Promo.jsx";
 import Products from "../components/Products/Products.jsx";
 import Footer from "../components/Footer/Footer";
+import CustomerReviews from "../components/CustomerReviews/CustomerReviews";
+import RecentlyViewed from "../components/RecentlyViewed/RecentlyViewed";
 
 function Home({ searchTerm }) {
   return (
@@ -18,6 +20,10 @@ function Home({ searchTerm }) {
       <Promo />
 
       <Products searchTerm={searchTerm} />
+
+      <RecentlyViewed/>
+
+      <CustomerReviews/>
 
       <Footer />
     </>

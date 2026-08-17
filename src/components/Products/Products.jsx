@@ -1,96 +1,56 @@
-import "./Products.css";
+import { useState } from "react";
 import ProductCard from "./ProductCard";
 import { products } from "./products";
+import "./Products.css";
 
-function Products({ searchTerm }) {
+function Products({ searchTerm = "" }) {
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const categories = ["All", "Sports", "Electronics", "Clothes"];
 
-  const sportsProducts = filteredProducts.filter(
-    (product) => product.category === "Sports"
-  );
+  const filteredProducts = products.filter((product) => {
+    const matchSearch = product.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
 
-  const electronicsProducts = filteredProducts.filter(
-    (product) => product.category === "Electronics"
-  );
+    const matchCategory =
+      activeCategory === "All" ||
+      product.category === activeCategory;
 
-  const clothesProducts = filteredProducts.filter(
-    (product) => product.category === "Clothes"
-  );
-
-  const renderSection = (title, items) => {
-    if (items.length === 0) return null;
-
-    return (
-      <div className="product-section">
-
-        <h2 className="section-title">{title}</h2>
-
-        <div className="products-grid">
-          {items.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
-          ))}
-        </div>
-
-      </div>
-    );
-  };
+    return matchSearch && matchCategory;
+  });
 
   return (
     <section className="products">
 
       <div className="products-header">
+        <h2>Explore Our Products</h2>
 
-        <div className="products-title">
-
-          <div className="products-tag">
-            <span></span>
-            <p>Our Products</p>
-          </div>
-
-          <h2>
-            {searchTerm
-              ? `Search Results (${filteredProducts.length})`
-              : "Explore Our Products"}
-          </h2>
-
+        <div className="category-filter">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={
+                activeCategory === category
+                  ? "active-category"
+                  : ""
+              }
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
         </div>
-
       </div>
 
-      {searchTerm ? (
-
-        <div className="products-grid">
-
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-              />
-            ))
-          ) : (
-            <h2>No products found.</h2>
-          )}
-
-        </div>
-
-      ) : (
-
-        <>
-          {renderSection("⚽ Sports", sportsProducts)}
-
-          {renderSection("💻 Electronics", electronicsProducts)}
-
-          {renderSection("👕 Clothes", clothesProducts)}
-        </>
-
-      )}
+      <div className="products-grid">
+        {filteredProducts.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+          />
+        ))}
+      </div>
 
     </section>
   );
