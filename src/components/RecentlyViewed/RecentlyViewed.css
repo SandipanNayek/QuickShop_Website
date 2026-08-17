@@ -1,65 +1,127 @@
-.recently-viewed{
-    padding:70px 50px;
+.recently-viewed {
+  width: 100%;
+  padding: 70px 50px;
 }
 
-.recent-header{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:18px;
+.recent-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
 }
 
-.recent-header span{
-    width:18px;
-    height:38px;
-    background:#DB4444;
-    border-radius:5px;
+.recent-header span {
+  width: 18px;
+  height: 38px;
+  background: #DB4444;
+  border-radius: 5px;
 }
 
-.recent-header p{
-    color:#DB4444;
-    font-weight:600;
-    font-size:18px;
+.recent-header p {
+  color: #DB4444;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.recently-viewed h2{
-    font-size:38px;
-    margin-bottom:40px;
-    color:#222;
+.recently-viewed h2 {
+  font-size: 38px;
+  color: #222;
+  margin-bottom: 35px;
 }
 
-.recent-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:30px;
+.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
 }
 
-body.dark-mode .recently-viewed h2{
-    color:#fff;
+body.dark-mode .recently-viewed h2 {
+  color: #fff;
 }
 
-@media(max-width:1100px){
-    .recent-grid{
-        grid-template-columns:repeat(3,1fr);
-    }
+/* ================= Tablet ================= */
+
+@media (max-width: 1100px) {
+
+  .recently-viewed {
+    padding: 60px 35px;
+  }
+
+  .recently-viewed h2 {
+    font-size: 34px;
+  }
+
+  .recent-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
 }
 
-@media(max-width:768px){
+/* ================= Mobile ================= */
 
-    .recently-viewed{
-        padding:50px 25px;
-    }
+@media (max-width: 768px) {
 
-    .recent-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+  .recently-viewed {
+    padding: 45px 20px;
+  }
+
+  .recent-header {
+    gap: 10px;
+  }
+
+  .recent-header span {
+    width: 14px;
+    height: 30px;
+  }
+
+  .recent-header p {
+    font-size: 15px;
+  }
+
+  .recently-viewed h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .recent-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
 
 }
 
-@media(max-width:500px){
+/* ================= Small Phones ================= */
 
-    .recent-grid{
-        grid-template-columns:1fr;
-    }
+@media (max-width: 480px) {
+
+  .recently-viewed {
+    padding: 35px 15px;
+  }
+
+  .recent-header {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .recent-header span {
+    width: 10px;
+    height: 24px;
+    border-radius: 3px;
+  }
+
+  .recent-header p {
+    font-size: 14px;
+  }
+
+  .recently-viewed h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .recent-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 
 }
