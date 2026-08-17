@@ -13,12 +13,11 @@ function Wishlist() {
         <div className="wishlist-title">
           <span></span>
 
-          <h2>
-            My Wishlist
-            <span className="wishlist-count">
-              ({wishlist.length})
-            </span>
-          </h2>
+          <h2>My Wishlist</h2>
+
+          <p className="wishlist-count">
+            ({wishlist.length} Items)
+          </p>
         </div>
 
         <button className="move-all-btn">
