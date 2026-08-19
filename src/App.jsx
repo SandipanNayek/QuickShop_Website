@@ -12,6 +12,7 @@ import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 import Orders from "./pages/Orders";
 import ProductDetails from "./pages/ProductDetails";
+import AIChat from "./components/AIChat/AIChat";
 
 import { useState } from "react";
 
@@ -55,6 +56,7 @@ function App() {
        />
 
       </Routes>
+      <AIChat />
     </>
   );
 }
