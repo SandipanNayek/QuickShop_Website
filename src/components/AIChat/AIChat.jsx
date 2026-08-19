@@ -42,19 +42,17 @@ function AIChat() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/chat",
-        {
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify({
-            message: currentMessage,
-          }),
-        }
-      );
+  "https://quickshop-pcbs.onrender.com/api/chat",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      message: currentMessage,
+    }),
+  }
+);
 
       const data = await response.json();
 
