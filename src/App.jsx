@@ -13,6 +13,8 @@ import OrderSuccess from "./pages/OrderSuccess";
 import Orders from "./pages/Orders";
 import ProductDetails from "./pages/ProductDetails";
 import AIChat from "./components/AIChat/AIChat";
+import About from "./pages/About";
+import ContactPage from "./pages/ContactPage";
 
 import { useState } from "react";
 
@@ -49,6 +51,11 @@ function App() {
         <Route path="/success" element={<OrderSuccess />} />
 
         <Route path='/orders' element={<Orders/>}/>
+
+        <Route path='/about' element={<About/>}/>
+        
+        <Route path="/contact" element={<ContactPage />} />
+
 
         <Route
         path="/product/:id"

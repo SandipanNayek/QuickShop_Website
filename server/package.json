@@ -13,7 +13,9 @@
     "cors": "^2.8.5",
     "dotenv": "^17.0.0",
     "express": "^4.21.0",
-    "openai": "^5.0.0"
+    "openai": "^5.0.0",
+    "razorpay": "^2.9.8",
+    "sonner": "^2.0.8"
   },
   "devDependencies": {
     "nodemon": "^3.0.0"

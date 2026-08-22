@@ -8,6 +8,8 @@ import {
   FaSearch,
   FaMoon,
   FaSun,
+  FaInfoCircle,
+  FaPhoneAlt,
 } from "react-icons/fa";
 
 import { NavLink } from "react-router-dom";
@@ -83,7 +85,6 @@ function Navbar({ searchTerm, setSearchTerm }) {
 
         {suggestions.length > 0 && (
           <div className="search-suggestions">
-
             {suggestions.map((product) => (
               <div
                 key={product.id}
@@ -102,7 +103,6 @@ function Navbar({ searchTerm, setSearchTerm }) {
 
               </div>
             ))}
-
           </div>
         )}
 
@@ -116,13 +116,16 @@ function Navbar({ searchTerm, setSearchTerm }) {
           className={({ isActive }) =>
             isActive ? "icon active" : "icon"
           }
+          title="Home"
         >
           <FaHome />
         </NavLink>
 
+
         <button
           className="theme-btn"
           onClick={() => setDarkMode(!darkMode)}
+          title="Toggle Theme"
         >
           {darkMode ? <FaSun /> : <FaMoon />}
         </button>
@@ -132,6 +135,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
           className={({ isActive }) =>
             isActive ? "icon active" : "icon"
           }
+          title="Wishlist"
         >
           <FaHeart />
 
@@ -140,7 +144,6 @@ function Navbar({ searchTerm, setSearchTerm }) {
               {wishlist.length}
             </span>
           )}
-
         </NavLink>
 
         <NavLink
@@ -148,6 +151,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
           className={({ isActive }) =>
             isActive ? "icon active" : "icon"
           }
+          title="Cart"
         >
           <FaShoppingCart />
 
@@ -156,7 +160,26 @@ function Navbar({ searchTerm, setSearchTerm }) {
               {cart.length}
             </span>
           )}
+        </NavLink>
 
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive ? "icon active" : "icon"
+          }
+          title="About"
+        >
+          <FaInfoCircle />
+        </NavLink>
+
+        <NavLink
+          to="/contact"
+          className={({ isActive }) =>
+            isActive ? "icon active" : "icon"
+          }
+          title="Contact"
+        >
+          <FaPhoneAlt />
         </NavLink>
 
         <NavLink
@@ -164,6 +187,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
           className={({ isActive }) =>
             isActive ? "icon active" : "icon"
           }
+          title={user ? "Profile" : "Login"}
         >
           <FaUser />
         </NavLink>

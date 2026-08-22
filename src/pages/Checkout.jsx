@@ -8,6 +8,8 @@ function Checkout() {
   const { cart, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
 
+  const [paymentMethod, setPaymentMethod] = useState("cod");
+
   const [billing, setBilling] = useState({
     firstName: "",
     lastName: "",
@@ -25,7 +27,126 @@ function Checkout() {
     });
   };
 
-  const handleOrder = (e) => {
+  const placeOrder = async () => {
+    try {
+      const currentUser =
+        JSON.parse(localStorage.getItem("currentUser")) || {};
+
+      const response = await fetch(
+        "http://localhost:5000/api/orders",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userEmail: currentUser.email,
+            customerName:
+              billing.firstName + " " + billing.lastName,
+            phone: billing.phone,
+            address: billing.address,
+            city: billing.city,
+            items: cart,
+            total: totalPrice,
+            paymentMethod,
+            paymentStatus:
+              paymentMethod === "cod"
+                ? "Pending"
+                : "Paid",
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!data.success) {
+        toast.error("Unable to save order.");
+        return;
+      }
+
+      clearCart();
+
+      toast.success("🎉 Order placed successfully!");
+
+      navigate("/success");
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to place order.");
+    }
+  };
+
+  const openRazorpay = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/payment/create-order",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: totalPrice,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!data.success) {
+        toast.error("Unable to create payment.");
+        return;
+      }
+
+      const options = {
+        key: data.key,
+        amount: data.order.amount,
+        currency: data.order.currency,
+        name: "QuickShop",
+        description: "Order Payment",
+        order_id: data.order.id,
+
+        prefill: {
+          name:
+            billing.firstName +
+            " " +
+            billing.lastName,
+          email: billing.email,
+          contact: billing.phone,
+        },
+
+        theme: {
+          color: "#ff6b35",
+        },
+
+        handler: async function (response) {
+          console.log(response);
+
+          toast.success("✅ Payment Successful!");
+
+          await placeOrder();
+        },
+
+        modal: {
+          ondismiss: function () {
+            toast.error("Payment Cancelled");
+          },
+        },
+      };
+
+      const razorpay = new window.Razorpay(options);
+
+      razorpay.on("payment.failed", function () {
+        toast.error("Payment Failed!");
+      });
+
+      razorpay.open();
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong.");
+    }
+  };
+
+  const handleOrder = async (e) => {
     e.preventDefault();
 
     if (cart.length === 0) {
@@ -41,33 +162,17 @@ function Checkout() {
       !billing.phone.trim() ||
       !billing.email.trim()
     ) {
-      toast.error("Please fill all required billing details.");
+      toast.error(
+        "Please fill all required billing details."
+      );
       return;
     }
 
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-    const orders = JSON.parse(localStorage.getItem("orders")) || [];
-
-    const newOrder = {
-      id: Date.now(),
-      userEmail: currentUser?.email,
-      items: cart,
-      total: totalPrice,
-      status: "Ordered",
-      date: new Date().toLocaleDateString(),
-      createdAt: Date.now(),
-    };
-
-    orders.unshift(newOrder);
-
-    localStorage.setItem("orders", JSON.stringify(orders));
-
-    toast.success("Order placed successfully 🎉");
-
-    clearCart();
-
-    navigate("/success");
+    if (paymentMethod === "cod") {
+      await placeOrder();
+    } else {
+      await openRazorpay();
+    }
   };
 
   return (
@@ -77,9 +182,11 @@ function Checkout() {
 
         <h2>Billing Details</h2>
 
-        <form id="checkout-form" onSubmit={handleOrder}>
-
-          <input
+        <form
+          id="checkout-form"
+          onSubmit={handleOrder}
+        >
+                    <input
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -140,23 +247,23 @@ function Checkout() {
             onChange={handleChange}
             required
           />
-
         </form>
-
       </div>
 
       <div className="checkout-right">
-
         <h2>Your Order</h2>
 
         {cart.map((item) => (
-          <div className="order-item" key={item.id}>
+          <div
+            className="order-item"
+            key={item.id}
+          >
             <span>
               {item.title} × {item.quantity}
             </span>
 
             <span>
-              ${item.price * item.quantity}
+              ₹{item.price * item.quantity}
             </span>
           </div>
         ))}
@@ -165,7 +272,7 @@ function Checkout() {
 
         <div className="order-item">
           <strong>Subtotal</strong>
-          <strong>${totalPrice}</strong>
+          <strong>₹{totalPrice}</strong>
         </div>
 
         <div className="order-item">
@@ -175,23 +282,44 @@ function Checkout() {
 
         <div className="order-item total">
           <strong>Total</strong>
-          <strong>${totalPrice}</strong>
+          <strong>₹{totalPrice}</strong>
         </div>
 
         <h3>Payment Method</h3>
 
         <label>
-          <input type="radio" name="payment" defaultChecked />
+          <input
+            type="radio"
+            value="cod"
+            checked={paymentMethod === "cod"}
+            onChange={(e) =>
+              setPaymentMethod(e.target.value)
+            }
+          />
           Cash On Delivery
         </label>
 
         <label>
-          <input type="radio" name="payment" />
+          <input
+            type="radio"
+            value="card"
+            checked={paymentMethod === "card"}
+            onChange={(e) =>
+              setPaymentMethod(e.target.value)
+            }
+          />
           Credit / Debit Card
         </label>
 
         <label>
-          <input type="radio" name="payment" />
+          <input
+            type="radio"
+            value="upi"
+            checked={paymentMethod === "upi"}
+            onChange={(e) =>
+              setPaymentMethod(e.target.value)
+            }
+          />
           UPI
         </label>
 
@@ -202,9 +330,7 @@ function Checkout() {
         >
           Place Order
         </button>
-
       </div>
-
     </section>
   );
 }
